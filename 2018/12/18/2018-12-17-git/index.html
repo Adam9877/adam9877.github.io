@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>git basic introduce | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="git 基礎設定 查詢設定列表1git config --list">
+<meta name="keywords" content="git,ssh,windows">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git basic introduce">
+<meta property="og:url" content="http://yoursite.com/2018/12/18/2018-12-17-git/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="git 基礎設定 查詢設定列表1git config --list">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-12-18T08:28:16.096Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git basic introduce">
+<meta name="twitter:description" content="git 基礎設定 查詢設定列表1git config --list">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2018-12-17-git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/18/2018-12-17-git/" class="article-date">
+  <time datetime="2018-12-17T16:00:00.000Z" itemprop="datePublished">2018-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git basic introduce
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="git-基礎設定"><a href="#git-基礎設定" class="headerlink" title="git 基礎設定"></a>git 基礎設定</h2><ol>
+<li>查詢設定列表<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<a id="more"></a>
+
+<ol start="2">
+<li><p>輸入姓名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;Adam&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>輸入mail</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email &quot;Adam@example.com.tw&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>windows 顯上隱藏資料夾或檔案<br>在任何資料夾下按alt會出現上方工具<br>點選工具-&gt;資料夾選項-&gt;檢視-&gt;顯示隱藏的檔案、資料夾及磁碟機</p>
+</li>
+</ol>
+<h2 id="新增本地-遠端數據庫"><a href="#新增本地-遠端數據庫" class="headerlink" title="新增本地/遠端數據庫"></a>新增本地/遠端數據庫</h2><ol>
+<li><p>本地數據庫 (local repository)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>遠端數據庫</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone 遠端數據庫地址</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="增加-刪除檔案"><a href="#增加-刪除檔案" class="headerlink" title="增加/刪除檔案"></a>增加/刪除檔案</h2><ol>
+<li><p>增加檔案進入索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add 檔案名稱</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>增加全部檔案進入索引(staging area)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查詢狀態</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>顯示歷史紀錄</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>將索引提交到數據庫</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;commit message&quot;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="使用-gitignore來忽略檔案進入版控"><a href="#使用-gitignore來忽略檔案進入版控" class="headerlink" title="使用 .gitignore來忽略檔案進入版控"></a>使用 .gitignore來忽略檔案進入版控</h2><p>.gitignore</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index.html (單一檔案)</span><br><span class="line">*.html (相同檔案格式)</span><br><span class="line">css/ (資料夾)</span><br></pre></td></tr></table></figure>
+
+<h2 id="取消索引-untracked-files"><a href="#取消索引-untracked-files" class="headerlink" title="取消索引 untracked files"></a>取消索引 untracked files</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD      //取消全部索引(git add .)</span><br><span class="line">git reset HEAD 單一檔名  //取消單一索引</span><br></pre></td></tr></table></figure>
+
+<h2 id="還原檔案"><a href="#還原檔案" class="headerlink" title="還原檔案"></a>還原檔案</h2><ol>
+<li><p>恢復單一檔案到最新commit狀態</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 檔案名稱</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>還原工作目錄與索引，會跟最後一次commit保持一樣</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="遠端數據庫-remote-repository"><a href="#遠端數據庫-remote-repository" class="headerlink" title="遠端數據庫 (remote repository)"></a>遠端數據庫 (remote repository)</h2><ol>
+<li><p>從遠端數據庫複製到本地數據庫</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https or git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新遠端數據庫</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">touch index.html</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;xx&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="Head-了解目前所在位置"><a href="#Head-了解目前所在位置" class="headerlink" title="Head 了解目前所在位置"></a>Head 了解目前所在位置</h2><ol>
+<li><p>了解目前分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>透過HEAD指到不同commit紀錄</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 前4碼 (從git log中得到前4碼)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切換回原來的master分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="git-branch分支創立"><a href="#git-branch分支創立" class="headerlink" title="git branch分支創立"></a>git branch分支創立</h2><ol>
+<li><p>分支創立</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名稱</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查詢分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切換到不同分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 分支名稱</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="git-merge-fast-forward"><a href="#git-merge-fast-forward" class="headerlink" title="git merge fast forward"></a>git merge fast forward</h2><ol>
+<li><p>單純合併無衝突</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge 分支名稱</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合併有衝突，沒辦法自動合併只能手動合併</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名稱</span><br><span class="line">大於小於等於符號拿掉後</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;merge feature1&quot;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="標籤-tag"><a href="#標籤-tag" class="headerlink" title="標籤 tag"></a>標籤 tag</h2><ol>
+<li><p>查詢標籤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增輕量標籤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag 標籤名稱</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切換到標籤的commit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 標籤名稱</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增標示標籤，為輕量標籤加上註解的意思</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -am &quot;註解內容&quot; 標籤名稱</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查詢詳細標籤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -n</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>刪除標籤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -d 標籤名稱</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="git-stash-暫存檔案"><a href="#git-stash-暫存檔案" class="headerlink" title="git stash 暫存檔案"></a>git stash 暫存檔案</h2><ol>
+<li><p>暫時儲存當前目錄工作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>瀏覽stash儲存列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>還原暫存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash pop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除最新暫存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash drop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清除全部暫存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git stash clear</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="如何推送分支到遠端數據庫"><a href="#如何推送分支到遠端數據庫" class="headerlink" title="如何推送分支到遠端數據庫"></a>如何推送分支到遠端數據庫</h2><ol>
+<li><p>查詢本地端有多少個遠端主機如github, gitlab等等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改遠端主機名稱</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rename 原名稱 修改後名稱</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>push分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin feature1</span><br><span class="line">         [預設遠端主機名稱] [分支名稱]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="git-pull-做更新遠端資料庫下來本地工作目錄"><a href="#git-pull-做更新遠端資料庫下來本地工作目錄" class="headerlink" title="git pull 做更新遠端資料庫下來本地工作目錄"></a>git pull 做更新遠端資料庫下來本地工作目錄</h2><h2 id="pull-無法push案例"><a href="#pull-無法push案例" class="headerlink" title="pull 無法push案例"></a>pull 無法push案例</h2><p>由於github有最新的紀錄在master的分支上，<br>所以會需要先做git pull下來merge到自己的分支後<br>再git push上去</p>
+<h2 id="利用github-pages更新網頁"><a href="#利用github-pages更新網頁" class="headerlink" title="利用github pages更新網頁"></a>利用github pages更新網頁</h2><p>github Settings -&gt; Github Pages -&gt; Source</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/18/2018-12-17-git/" data-id="ck07hgu1l0013ncp4sfaimfvx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/04/2019-01-04-5vt/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          5vt 相關產品技術介紹
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/12/14/2018-12-14-git-ssh-key/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">git ssh key</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/802-11ac/">802.11ac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/802-11n/">802.11n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MIMO/">MIMO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MU-MIMO/">MU-MIMO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PON/">PON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PON-unbounding/">PON unbounding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDN/">SDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wifi/">Wifi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubeadm/">kubeadm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/">kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/802-11ac/" style="font-size: 10px;">802.11ac</a> <a href="/tags/802-11n/" style="font-size: 10px;">802.11n</a> <a href="/tags/MIMO/" style="font-size: 10px;">MIMO</a> <a href="/tags/MU-MIMO/" style="font-size: 10px;">MU-MIMO</a> <a href="/tags/PON/" style="font-size: 10px;">PON</a> <a href="/tags/PON-unbounding/" style="font-size: 10px;">PON unbounding</a> <a href="/tags/SDN/" style="font-size: 10px;">SDN</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/easy/" style="font-size: 15px;">easy</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/kubeadm/" style="font-size: 10px;">kubeadm</a> <a href="/tags/kubernetes/" style="font-size: 10px;">kubernetes</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/ssh/" style="font-size: 15px;">ssh</a> <a href="/tags/windows/" style="font-size: 15px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/06/2019-02-04-ansible/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/2019-01-21-gpon/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/29/2019-09-06-k8s install/">kubernetes install in kubeadm</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/04/2019-01-04-5vt/">5vt 相關產品技術介紹</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/18/2018-12-17-git/">git basic introduce</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

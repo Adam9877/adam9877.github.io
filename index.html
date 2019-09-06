@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2019-02-04-ansible" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/06/2019-02-04-ansible/" class="article-date">
+  <time datetime="2019-09-06T02:11:23.996Z" itemprop="datePublished">2019-09-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>Introduction to ansible</p>
+<ul>
+<li>docs.ansible.com</li>
+</ul>
+</li>
+<li><p>setting up ansible</p>
+<ul>
+<li>oracle VM VirtaulBox</li>
+<li><a href="http://www.osboxes.rog" target="_blank" rel="noopener">www.osboxes.rog</a> - various os</li>
+<li>enable virtualization in BIOS<ul>
+<li>Network: Bridged Adapter to network</li>
+<li>shutdown now/ shutdown now -r</li>
+<li>clone -&gt; reinitialize mac address -&gt; Linked clone</li>
+</ul>
+</li>
+<li>MobaXterm: terminal software</li>
+<li>vi /etc/hostname<ul>
+<li>ansiblecontroller</li>
+</ul>
+</li>
+<li>vi /etc/hosts<ul>
+<li>127.0.0.1 localhost ansiblecontroller</li>
+<li>::1 localhost ansiblecontroller</li>
+</ul>
+</li>
+<li>shutdown now -r</li>
+<li>yum install ansible</li>
+<li>ansible –version</li>
+</ul>
+</li>
+<li><p>introduction to YAML</p>
+<ul>
+<li><p>differentiating the key and value by having a space followed by a colon.</p>
+</li>
+<li><p>array/Lists: dash(-) indicates that it’s an element of an array</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Fruits:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Orange</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Apple</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">Banana</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dictionary/map: </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="string">Fruits</span></span><br><span class="line"><span class="attr">    apple:</span> <span class="number">10</span><span class="string">cal</span></span><br><span class="line"><span class="attr">    pipeapple:</span> <span class="number">20</span><span class="string">cal</span></span><br><span class="line"><span class="attr">    orange:</span> <span class="number">15</span><span class="string">cal</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dictionary is an unordered collection whereas lists are ordered collection.</p>
+</li>
+<li><p>#: comments</p>
+</li>
+</ul>
+</li>
+<li><p>ansible inventory files: information about these target system</p>
+<ul>
+<li><p>Linux: SSH</p>
+</li>
+<li><p>Windows: Powershell Remoting</p>
+</li>
+<li><p>Agentless</p>
+</li>
+<li><p>default ansbile inventory will be used in /etc/ansible/hosts</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#sample inventory file</span></span><br><span class="line"></span><br><span class="line"><span class="string">web</span> <span class="string">ansible_host=server1.company.com</span> <span class="string">ansible_connection=ssh</span> <span class="string">ansible_port=22</span> <span class="string">ansible_user=root</span> <span class="string">ansible_ssh_pss=1234</span></span><br><span class="line"><span class="string">db</span>  <span class="string">ansible_host=server2.company.com</span> <span class="string">ansible_connection=winrm</span> <span class="string">ansible_user=admin</span> <span class="string">ansible_password=1234</span></span><br><span class="line"><span class="string">mail</span> <span class="string">ansible_host=server3.company.com</span> <span class="string">ansible_connection=ssh</span></span><br><span class="line"><span class="string">web2</span> <span class="string">ansible_host=server4.company.com</span></span><br><span class="line"><span class="string">ansible_connection=winrm</span></span><br><span class="line"></span><br><span class="line"><span class="string">localhost</span> <span class="string">ansible_connection=localhost</span></span><br><span class="line"></span><br><span class="line"><span class="string">[mail]</span></span><br><span class="line"><span class="string">server3.company.com</span></span><br><span class="line"><span class="string">server4.company.com</span></span><br><span class="line"></span><br><span class="line"><span class="string">[db]</span></span><br><span class="line"><span class="string">server5.company.com</span></span><br><span class="line"><span class="string">server6.company.com</span></span><br><span class="line"></span><br><span class="line"><span class="string">[web]</span></span><br><span class="line"><span class="string">server7.company.com</span></span><br><span class="line"><span class="string">server8.company.com</span></span><br><span class="line"></span><br><span class="line"><span class="string">[all_servers:children]</span></span><br><span class="line"><span class="string">mail</span></span><br><span class="line"><span class="string">db</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>cat &gt; inventory.txt</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target1 ansible_host=192.168.1.x ansible_ssh_pass=osboxes.org</span><br><span class="line">^C</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>do a manual ssh first to accept ssh fingerprint</p>
+</li>
+<li><p>ansible target1 -m ping -i inventory.txt</p>
+</li>
+</ul>
+</li>
+<li><p>ansible playbooks</p>
+<ul>
+<li><p>a set of instructions you provide ansible to work its magic</p>
+</li>
+<li><p>a single YAML file</p>
+</li>
+<li><p>define a set of activities (tasks) to be run on host</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Simple Ansible Playbook.yml</span></span><br><span class="line"><span class="bullet">-</span> </span><br><span class="line"><span class="attr">    name:</span> <span class="string">pla</span> <span class="number">1</span></span><br><span class="line"><span class="attr">    hosts:</span> <span class="string">localhost</span> <span class="string">(from</span> <span class="string">your</span> <span class="string">inventory</span> <span class="string">file)</span></span><br><span class="line"><span class="attr">    tasks:</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">Execute</span> <span class="string">command</span> <span class="string">'date'</span></span><br><span class="line"><span class="attr">          command:</span> <span class="string">date</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">Execute</span> <span class="string">script</span> <span class="string">on</span> <span class="string">server</span></span><br><span class="line"><span class="attr">          script:</span> <span class="string">test_script.sh</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">Install</span> <span class="string">httpd</span> <span class="string">service</span></span><br><span class="line"><span class="attr">          yum:</span> </span><br><span class="line"><span class="attr">            name:</span> <span class="string">httpd</span></span><br><span class="line"><span class="attr">            state:</span> <span class="string">present</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">start</span> <span class="string">web</span> <span class="string">server</span></span><br><span class="line"><span class="attr">          service:</span></span><br><span class="line"><span class="attr">            name:</span> <span class="string">httpd</span></span><br><span class="line"><span class="attr">            state:</span> <span class="string">started</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ansible-doc-l: 查詢ansible modules</p>
+</li>
+<li><p>Execute ansible playbook</p>
+<ul>
+<li>ansible-playbook playbook.yaml</li>
+</ul>
+</li>
+<li><p>查詢ansible參數</p>
+<ul>
+<li>ansible-playbook –help</li>
+</ul>
+</li>
+<li><p>兩種執行ansible的方式</p>
+<ol>
+<li>ansible<ul>
+<li>ansible hosts -a command -i inventory.txt</li>
+<li>ansible hosts -m module -i inventory.txt</li>
+</ul>
+</li>
+<li>ansible-playbook<ul>
+<li>ansible-playbook playbook.yaml</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>IDE tools: <a href="https://atom.io" target="_blank" rel="noopener">https://atom.io</a></p>
+<ul>
+<li>install package: run on command at IDE path<ul>
+<li>apm install linter-js-yaml</li>
+<li>apm install remote-sync<ul>
+<li>atom ide: reomte-sync-&gt;configure</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>online validate: <a href="http://www.yamllint.com" target="_blank" rel="noopener">www.yamllint.com</a></p>
+</li>
+</ul>
+</li>
+<li><p>variables</p>
+</li>
+<li><p>conditionals</p>
+</li>
+<li><p>loops</p>
+</li>
+<li><p>roles</p>
+<ul>
+<li><p>include</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">- name:</span> <span class="string">Set</span> <span class="string">Firewall</span> <span class="string">Configurations</span></span><br><span class="line"><span class="attr">  hosts:</span> <span class="string">web</span></span><br><span class="line"><span class="attr">  vars_files:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">variales.yml</span></span><br><span class="line"><span class="attr">  tasks:</span></span><br><span class="line"><span class="attr">    - include:</span> <span class="string">tasks.yml</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Ansible roles: define a structure for your project and define standards on how files and folders are</p>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/06/2019-02-04-ansible/" data-id="ck07hgu1v0017ncp48n8x4ot0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-01-21-gpon" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/06/2019-01-21-gpon/" class="article-date">
+  <time datetime="2019-09-06T02:11:23.996Z" itemprop="datePublished">2019-09-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/06/2019-01-21-gpon/" data-id="ck07hgu1s0016ncp4089mcaoa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-09-06-k8s install" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/29/2019-09-06-k8s install/" class="article-date">
+  <time datetime="2019-08-28T16:00:00.000Z" itemprop="datePublished">2019-08-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/29/2019-09-06-k8s install/">kubernetes install in kubeadm</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大概可以分成5大步驟，<br>安裝的環境是virtualbox + ubuntu 16.04</p>
+<p>以三個VM來代表三台node，分別為一台Master及二台Worker<br>Master node透過kube-apiserver與Worker node的kubelet做溝通<br>其中第1、2步驟是三台VM都要做，而步驟3、4是Master VM要做，步驟5是兩台Worker VM要做的</p>
+<h2 id="1-首先要確保三台VM都有建好docker環境，這邊要注意一點是在建docker環境時不要見到最新的docker-version，因為k8s沒有相容最新版本的docker"><a href="#1-首先要確保三台VM都有建好docker環境，這邊要注意一點是在建docker環境時不要見到最新的docker-version，因為k8s沒有相容最新版本的docker" class="headerlink" title="1. 首先要確保三台VM都有建好docker環境，這邊要注意一點是在建docker環境時不要見到最新的docker version，因為k8s沒有相容最新版本的docker"></a>1. 首先要確保三台VM都有建好docker環境，這邊要注意一點是在建docker環境時不要見到最新的docker version，因為k8s沒有相容最新版本的docker</h2><pre><code>- 因為k8s的prerequisite有要求三個node要有不同的hostname, mac及uuid，所以三台VM可以更改各自的hostname
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/hostname</span><br><span class="line">vi /etc/hosts</span><br></pre></td></tr></table></figure>
+
+- 要注意的地方是三台VM除了有能上網的網卡之外，最好在三台VM上各自建一個static ip的介面，作為三台VM上之溝通，可以在ubuntu的/etc/network/interfaces裡更改ip
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">auto enp0s8</span><br><span class="line">iface enp0s8 inet static</span><br><span class="line">      address 192.168.1.10</span><br><span class="line">      netmask 255.255.255.0</span><br></pre></td></tr></table></figure>
+
+- 關掉每台VM的swap功能
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#swapoff -a</span><br><span class="line">#vi /etc/fstab 中將swap那行的uuid註解掉</span><br></pre></td></tr></table></figure>
+
+- 安裝docker部分可以參考docker官網 https://docs.docker.com/install/linux/docker-ce/ubuntu/
+但到最後一步時要安裝符合k8s的版本時，不要直接照打，改成
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install docker-ce=&lt;版本名稱17.03....&gt;</span><br></pre></td></tr></table></figure>
+
+可以打apt-cache madison docker-ce看目前的docker cache版本有哪些
+我想到我之前在安裝SEBA的時候就是安裝到最新的docker版本，所以在RUN SEBA就覺得怪怪的，但那時候對k8s還不熟</code></pre><h2 id="2-在三台VM安裝kubeadm、kubectl及kubelet，kubeadm本身套件沒有包刮kubelet及kubectl，所以這三個都要安裝在三台VM上"><a href="#2-在三台VM安裝kubeadm、kubectl及kubelet，kubeadm本身套件沒有包刮kubelet及kubectl，所以這三個都要安裝在三台VM上" class="headerlink" title="2. 在三台VM安裝kubeadm、kubectl及kubelet，kubeadm本身套件沒有包刮kubelet及kubectl，所以這三個都要安裝在三台VM上"></a>2. 在三台VM安裝kubeadm、kubectl及kubelet，kubeadm本身套件沒有包刮kubelet及kubectl，所以這三個都要安裝在三台VM上</h2><ul>
+<li>這部分直接參照複製貼上就好<br><a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/" target="_blank" rel="noopener">https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y apt-transport-https curl</span><br><span class="line">curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -</span><br><span class="line">cat &lt;&lt;EOF &gt;/etc/apt/sources.list.d/kubernetes.list</span><br><span class="line">deb https://apt.kubernetes.io/ kubernetes-xenial main</span><br><span class="line">EOF</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install -y kubelet kubeadm kubectl</span><br><span class="line">apt-mark hold kubelet kubeadm kubectl</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="3-在Master-VM上初始化，因為在建k8s的時候，彼此物件之間的網路沒有所謂的linux-bridge已經建好，必須使用目前各自hypervisor提供的POD-network或是可以稱為Cluster-network"><a href="#3-在Master-VM上初始化，因為在建k8s的時候，彼此物件之間的網路沒有所謂的linux-bridge已經建好，必須使用目前各自hypervisor提供的POD-network或是可以稱為Cluster-network" class="headerlink" title="3. 在Master VM上初始化，因為在建k8s的時候，彼此物件之間的網路沒有所謂的linux bridge已經建好，必須使用目前各自hypervisor提供的POD network或是可以稱為Cluster network"></a>3. 在Master VM上初始化，因為在建k8s的時候，彼此物件之間的網路沒有所謂的linux bridge已經建好，必須使用目前各自hypervisor提供的POD network或是可以稱為Cluster network</h2><ul>
+<li><p><a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/" target="_blank" rel="noopener">https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/</a></p>
+</li>
+<li><p>這邊要特別注意在初始化的過程中要指定要用什麼cluster network，通常會跟你用什麼hypervisor有關係，如果用virtualbox就用flanner，此外因為現在有兩張介面卡，所以要在Master VM上指定node彼此之間用的ip，就是步驟1給Master VM的ip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=&lt;ip-address&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝完後將Master VM上顯示的指令key上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#mkdir...</span><br><span class="line">#...</span><br><span class="line">#...</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="4-建立Master-VM的網路-如果步驟3選擇flannel的話"><a href="#4-建立Master-VM的網路-如果步驟3選擇flannel的話" class="headerlink" title="4. 建立Master VM的網路 (如果步驟3選擇flannel的話)"></a>4. 建立Master VM的網路 (如果步驟3選擇flannel的話)</h2>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/62e44c867a2846fefb68bd5f178daf4da3095ccb/Documentation/kube-flannel.yml</span><br></pre></td></tr></table></figure>
+
+<p>   這邊要等一段時間，等network建好才進行步驟5</p>
+<h2 id="5-兩台Worker-node的VM加入Master這個cluster"><a href="#5-兩台Worker-node的VM加入Master這個cluster" class="headerlink" title="5. 兩台Worker node的VM加入Master這個cluster"></a>5. 兩台Worker node的VM加入Master這個cluster</h2><ul>
+<li>兩台Worker VM上key上在步驟3 Master node最後產生的kubeadm join的指令，用來加入Master的VM</li>
+<li>可以在Master VM上打kubectl get pods指令來看兩個Worker VM有沒有Ready</li>
+<li>如果有的話即安裝完成</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/29/2019-09-06-k8s install/" data-id="ck07hgu1y0019ncp4f13gvevv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kubeadm/">kubeadm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kubernetes/">kubernetes</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2019-01-04-5vt" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/04/2019-01-04-5vt/" class="article-date">
+  <time datetime="2019-01-03T16:00:00.000Z" itemprop="datePublished">2019-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/04/2019-01-04-5vt/">5vt 相關產品技術介紹</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="in-access"><a href="#in-access" class="headerlink" title="in access"></a>in access</h2>
+        
+          <p class="article-more-link">
+            <a href="/2019/01/04/2019-01-04-5vt/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/04/2019-01-04-5vt/" data-id="ck07hgu1n0015ncp44c49fgyn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PON-unbounding/">PON unbounding</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2018-12-17-git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/18/2018-12-17-git/" class="article-date">
+  <time datetime="2018-12-17T16:00:00.000Z" itemprop="datePublished">2018-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/18/2018-12-17-git/">git basic introduce</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="git-基礎設定"><a href="#git-基礎設定" class="headerlink" title="git 基礎設定"></a>git 基礎設定</h2><ol>
+<li>查詢設定列表<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/18/2018-12-17-git/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/18/2018-12-17-git/" data-id="ck07hgu1l0013ncp4sfaimfvx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2018-12-14-git-ssh-key" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/14/2018-12-14-git-ssh-key/" class="article-date">
+  <time datetime="2018-12-13T16:00:00.000Z" itemprop="datePublished">2018-12-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/14/2018-12-14-git-ssh-key/">git ssh key</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="add-ssh-key-to-your-github"><a href="#add-ssh-key-to-your-github" class="headerlink" title="add ssh key to your github"></a>add ssh key to your github</h2><p>ref: <a href="https://help.github.com/articles/checking-for-existing-ssh-keys/" target="_blank" rel="noopener">github</a></p>
+<ol>
+<li>檢查是否已經有既有之ssh key</li>
+</ol>
+<ul>
+<li>打開Git bash</li>
+<li>輸入 ls -al ~/.ssh<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al ~/.ssh</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/14/2018-12-14-git-ssh-key/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/14/2018-12-14-git-ssh-key/" data-id="ck07hgu1j0012ncp48cu759gy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows/">windows</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2018-12-12-pon" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/12/2018-12-12-pon/" class="article-date">
+  <time datetime="2018-12-11T16:00:00.000Z" itemprop="datePublished">2018-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/12/2018-12-12-pon/">PON 技術</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SDN-in-access"><a href="#SDN-in-access" class="headerlink" title="SDN in access"></a>SDN in access</h2><p>cht skt nbn<br> the killer app in g.fast virtualization</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/12/2018-12-12-pon/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/12/2018-12-12-pon/" data-id="ck07hgu0v0006ncp4jblyif3x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PON/">PON</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDN/">SDN</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2018-12-11-String-to-Integer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/11/2018-12-11-String-to-Integer/" class="article-date">
+  <time datetime="2018-12-10T16:00:00.000Z" itemprop="datePublished">2018-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/11/2018-12-11-String-to-Integer/">leetcode Q8</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>記錄用python撰寫leetcode過程</p>
+<p>題目:<br>Implement atoi which converts a string to an integer.</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/11/2018-12-11-String-to-Integer/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/11/2018-12-11-String-to-Integer/" data-id="ck07hgu0t0005ncp4y5coa2zw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2018-12-10-reverse-integer" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/10/2018-12-10-reverse-integer/" class="article-date">
+  <time datetime="2018-12-09T16:00:00.000Z" itemprop="datePublished">2018-12-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/10/2018-12-10-reverse-integer/">leetcode Q7</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>記錄用python撰寫leetcode過程</p>
+<p>題目:<br>Given a 32-bit signed integer, reverse digits of an integer.</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/10/2018-12-10-reverse-integer/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/10/2018-12-10-reverse-integer/" data-id="ck07hgu0q0004ncp4j4p0msde" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easy/">easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2018-12-06-two-sum" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/06/2018-12-06-two-sum/" class="article-date">
+  <time datetime="2018-12-05T16:00:00.000Z" itemprop="datePublished">2018-12-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/06/2018-12-06-two-sum/">leetcode Q1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>記錄用python撰寫leetcode過程</p>
+<p>題目:<br>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/06/2018-12-06-two-sum/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/06/2018-12-06-two-sum/" data-id="ck07hgu0l0002ncp4qzt6ynd4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/easy/">easy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/802-11ac/">802.11ac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/802-11n/">802.11n</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MIMO/">MIMO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MU-MIMO/">MU-MIMO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PON/">PON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PON-unbounding/">PON unbounding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDN/">SDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Wifi/">Wifi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubeadm/">kubeadm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/">kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/802-11ac/" style="font-size: 10px;">802.11ac</a> <a href="/tags/802-11n/" style="font-size: 10px;">802.11n</a> <a href="/tags/MIMO/" style="font-size: 10px;">MIMO</a> <a href="/tags/MU-MIMO/" style="font-size: 10px;">MU-MIMO</a> <a href="/tags/PON/" style="font-size: 10px;">PON</a> <a href="/tags/PON-unbounding/" style="font-size: 10px;">PON unbounding</a> <a href="/tags/SDN/" style="font-size: 10px;">SDN</a> <a href="/tags/Wifi/" style="font-size: 10px;">Wifi</a> <a href="/tags/easy/" style="font-size: 15px;">easy</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/kubeadm/" style="font-size: 10px;">kubeadm</a> <a href="/tags/kubernetes/" style="font-size: 10px;">kubernetes</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/ssh/" style="font-size: 15px;">ssh</a> <a href="/tags/windows/" style="font-size: 15px;">windows</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/09/06/2019-02-04-ansible/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/06/2019-01-21-gpon/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/29/2019-09-06-k8s install/">kubernetes install in kubeadm</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/04/2019-01-04-5vt/">5vt 相關產品技術介紹</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/18/2018-12-17-git/">git basic introduce</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

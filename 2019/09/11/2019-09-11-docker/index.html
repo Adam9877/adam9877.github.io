@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>docker 相關指令 (上) | IT learning process</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">IT learning process</a><span class="subtitle"></span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>docker 相關指令 (上)</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2019-09-11</div><div class="post-tags"><a class="post-tag-link" href="/tags/docker/">docker</a>/<a class="post-tag-link" href="/tags/dockerfile/">dockerfile</a></div></div></div><article><div class="container post"><h2 id="docker-學習紀錄"><a href="#docker-學習紀錄" class="headerlink" title="docker 學習紀錄"></a>docker 學習紀錄</h2><ol>
+<li><p>看完整的docker ps 指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a --no-trunc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>當如果有address已經被使用時，可透過netstat</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">netstat -tunlp | grep &lt;port-number&gt;</span><br><span class="line">kill -9 &lt;process_id&gt;</span><br><span class="line">or</span><br><span class="line">killall -q &lt;process_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安裝docker好時，一般使用者帳戶要去access docker service</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG docker &lt;account&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>build image</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t &lt;name:tag&gt; -f &lt;Dockerfile&gt; .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移除所有docker container，不管有沒有在執行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm -fv $(docker ps -q)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>docker 沒有systemd &amp; sudo</p>
+</li>
+<li><p>查看container log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs -f &lt;docker_name&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在CMD底下只有在foreground模式，container才會活著，background下container不會存在</p>
+</li>
+<li><p>Dockerfile</p>
+<ul>
+<li><p>COPY</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">COPY &lt;folder_name&gt; /opt/...</span><br><span class="line">COPY指令folder為把folder裡的data丟到要複製去的folder，不會連folder名稱都複製過去</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ADD </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">允許從網路上載好資料後再複製到image裡，與COPY指令最大的不同</span><br><span class="line">ADD https://github.com/...zip /var/www/html/code.zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ENV: 環境變數</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ENV HTML beginner-html-site-style</span><br><span class="line">ADD https://github.com/$HTML</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>WORKDIR: 當有指令要開始更換到工作目錄時，可在指令前一行指定WORKDIR，此後再進入container時的預設路徑($PWD)也被切換到WORKDIR</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WORKDIR /var/www/html</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LABEL: 只是個在dockerfile裡的標示作用，有點像程式語言的註解，通常用在註明此image維護者與公司維和，一個LABEL寫一個key及value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LABEL maintainer=taylor</span><br><span class="line">LABEL company=nthu</span><br><span class="line">LABEL mail=xxx@oz.nthu.edu.tw</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>USER: 增加user帳號在Dockerfile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RUN useradd &lt;application&gt; &amp;&amp; chown &lt;application&gt;:&lt;application&gt; -R &lt;folder&gt; </span><br><span class="line">USER application</span><br><span class="line">在Linux環境下切換到不同使用者=&gt; su &lt;使用者帳號&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ARG: 使用argument</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ARG 變數1=預設值1</span><br><span class="line">ARG 變數2=預設值2</span><br><span class="line"></span><br><span class="line">docker build -t &lt;name:tag&gt; -f Dockerfile --build-arg 變數1=變數值 --build-arg 變數2=變數值</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+</div><!-- comment system--><div class="container"><hr></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="/atom.xml" target="_blank"><i class="fa fa-rss"></i></a></div><div class="footer">© 2019 <a href="/" rel="nofollow">John Doe</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+</script></body></html>
